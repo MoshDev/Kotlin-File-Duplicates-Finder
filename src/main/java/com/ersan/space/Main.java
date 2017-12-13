@@ -6,12 +6,17 @@ package com.ersan.space;
 public class Main {
 
     public static void main(String[] args) {
-        if (args == null || args.length == 0) {
-            throw new IllegalArgumentException("Please provide the directory path to scan");
-        }
+//
+//
+//        if (args == null || args.length == 0) {
+//            throw new IllegalArgumentException("Please provide the directory path to scan");
+//        }
+//
 
-        String inputDir = args[0];
+        String inputDir = "/Users/ersan/Android/Bitbucket/sample_test";
         Starter starter = new Starter(new Args(inputDir));
-        starter.findDuplicates();
+        starter.deletedDuplicates();
+
+
     }
 }
