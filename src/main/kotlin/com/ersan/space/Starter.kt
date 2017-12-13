@@ -61,12 +61,11 @@ fun File.allFilesIn(): List<File> = when {
 }
 
 fun Long.readableSize(): String {
-    val bytes = this
-    val unit = 1024
-    if (bytes < unit) return bytes.toString() + " B"
-    val exp = (Math.log(bytes.toDouble()) / Math.log(unit.toDouble())).toInt()
-    val pre = ("KMGTPE")[exp - 1] + "i"
-    return String.format("%.1f %sB", bytes / Math.pow(unit.toDouble(), exp.toDouble()), pre)
+    val unit = 1024.0
+    if (this < unit) return "$this B"
+    val bytes = this.toDouble()
+    val exp = (Math.log(bytes) / Math.log(unit)).toInt()
+    return "%.1f ${"KMGTPE"[exp - 1]}iB".format(bytes / Math.pow(unit, exp.toDouble()))
 }
 
 fun File.md5(): String = with(MessageDigest.getInstance("MD5")) {
